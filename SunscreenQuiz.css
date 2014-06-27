@@ -1,0 +1,136 @@
+html {
+	width: 100%;
+	height: 100%;
+}
+
+.global-wrap {
+	margin-left: auto;
+	margin-right: auto;
+	width: 1650px;
+	height: 800px;
+}
+
+h3 {
+	font-size: 5em;
+	color: white;
+	font-family: 'Lobster', cursive;
+	margin-top: 20px;
+}
+
+#burn {
+	color:red;
+	display:none;
+}
+
+body {
+	position: relative;
+	width: 98%;
+	height: 96%;
+	margin: 0.8em auto;
+	font-family: 'Lato', Calibri, Arial, sans-serif;
+	text-align: center;
+	background-image:url("the-ultimate-guide-for-a-perfect-vacation_05.jpg");
+	background-repeat: no-repeat;
+	background-size:1750px;
+	clear: both;
+}
+
+form {
+	height: 25em;
+	width: 42em;
+	background: rgba(255,165,0, 0.2);
+	padding: 10px;
+	margin-left: 40px;
+	border-radius: 30px;
+	text-align: center;
+	opacity: .9;
+	margin:0 30 auto;
+	border:dotted 5px #fff;
+	position: absolute;
+}
+
+.questions {
+	font-family: 'Lobster', cursive;
+	color: #fff;
+	font-size: 20px;
+}
+
+.answers {
+	font-family: Arial;
+	color: #622312;
+	list-style: none;
+	padding-left: 20px;
+	margin-bottom: 0px;
+}
+
+.answers li {
+	padding-bottom: 25px;
+}
+
+.answers li:last-child{
+	padding-bottom: 13px;
+}
+
+#submit {
+	width: 200px;
+	height: 50px;
+	background: #59ADDB;
+	color: #fff;
+	font-size: 20px;
+	border: dotted 4px #fff;
+	border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 4px;
+}
+
+#submit:hover {
+	background: #622312;
+	color: #fff;
+	-webkit-transition: background 1.5s ease-in-out;
+	-moz-transition: background 1.5s ease-in-out;
+	-ms-transition: background 1.5s ease-in-out;
+	-o-transition: background 1.5s ease-in-out;
+	transition: background 1.5s ease-in-out;
+	cursor: pointer;
+}
+
+.feedback-wrap {
+	height: 290px;
+	width:230px;
+	margin-top: 400px;
+	margin-left: 30px;
+}
+
+#feedback {
+	font-family: 'Lobster', cursive;
+	font-size: 2.5em;
+	color:#f8cf15;
+	padding: 1px;
+}
+
+#fact {
+	font-family: arial;
+	color: #763017;
+	overflow:scroll;
+}
+
+.bottom-wrap{
+	height: 290px;
+	width:230px;
+	margin-right: 360px;
+	float: right;
+}
+
+#counter{
+	font-family: 'lobster';
+	font-size: 40px;
+	color:#622312;
+}
+
+.sun-tally li {
+	text-decoration: none;
+	margin-top: 30px;
+	display: inline-block;
+	float: left;
+	display: none;
+}
