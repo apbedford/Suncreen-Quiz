@@ -17,9 +17,11 @@ h3 {
 	margin-top: 20px;
 }
 
-#burn {
-	color:red;
-	display:none;
+
+#plsSelect {
+	display: none;
+	font-size: 2em;
+	color: red;
 }
 
 body {
@@ -52,15 +54,17 @@ form {
 .questions {
 	font-family: 'Lobster', cursive;
 	color: #fff;
-	font-size: 20px;
+	font-size: 25px;
 }
 
-.answers {
+.answers, #a1, #a2, #a3, #a4 {
 	font-family: Arial;
 	color: #622312;
 	list-style: none;
+	display: block;
 	padding-left: 20px;
 	margin-bottom: 0px;
+	width: 650px;
 }
 
 .answers li {
@@ -99,6 +103,7 @@ form {
 	width:230px;
 	margin-top: 400px;
 	margin-left: 30px;
+	border: 1px solid black;
 }
 
 #feedback {
@@ -106,9 +111,14 @@ form {
 	font-size: 2.5em;
 	color:#f8cf15;
 	padding: 1px;
+	width: 100%;
+	height: 50px;
 }
 
 #fact {
+	height: 150px;
+	width: 100%;
+	border:2px red solid;
 	font-family: arial;
 	color: #763017;
 	overflow:scroll;
@@ -125,6 +135,7 @@ form {
 	font-family: 'lobster';
 	font-size: 40px;
 	color:#622312;
+	padding-top: 5px;
 }
 
 .sun-tally li {

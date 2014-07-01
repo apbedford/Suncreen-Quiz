@@ -6,45 +6,47 @@
 	<link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="SunscreenQuiz.css"/> 
 	<link rel="shortcut icon" href="../Suncreen%20Quiz/Sun.ico">
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script type="text/javascript" src="app.js"></script>
 
 </head>
 <body>
 
 	<!--Header -->
 	<div class ="global-wrap">
-	<header><h3>Sunscreen   Quiz</h3></header>
-	<p id ="burn">Don't get burned this summer!</p>
-	<section class="Quiz"> <!-- Quiz Section -->
+		<header><h3>Sunscreen   Quiz</h3></header>
+		<p id= "plsSelect">Please Select An Answer!</p>
+		<section class="Quiz"> <!-- Quiz Section -->
 
 
-		<form>
-			<h1 class= "questions">Q:Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor?</h1><hr>
+			<form>
+
+		<h1 class= "questions"></h1><hr>
 			<strong><ul class="answers">
-				<li><input type="radio" name="question">But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system</li>
-				<li><input type="radio" name="question">But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system</li>
-				<li><input type="radio" name="question">But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system</li>
-				<li><input type="radio" name="question">But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system</li></strong>
-			</ul>
-
-			<input id="submit" type ="submit" value = "Submit"></input>
-	<ul class= "sun-tally">
-		<li><img src="../Suncreen%20Quiz/sun-icon.png"></li>
-	</ul>
-			</form>
-	</section>
-<div class ="bottom-wrap">
-	<div class = "feedback-wrap">
-		<div id ="feedback">CORRECT!</div>
-		<div id = "fact">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</div>
-		<div id = "counter"><strong>0</strong>/<strong>7</strong>
-			<img src="../Suncreen%20Quiz/sun-icon.png"></div>
-	</div>
-</div>
-	<!-- Bottom Navigation -->
-	<nav> 
-		<ul class="clearfix">
-		</ul>
-	</nav>
-</div>
-</body>
-</html>
+				<li><input type="radio" name="radio" id="a1" value =""></li>
+				<li><input type="radio" name="radio" id="a2" value =""></li>
+				<li><input type="radio" name="radio" id="a3" value =""></li>
+				<li><input type="radio" name="radio" id="a4" value =""></li>
+			</ul></strong>
+					<input id="submit" type ="submit" value = "Submit"></input>
+					<ul class= "sun-tally">
+						<li><img src="../Suncreen%20Quiz/sun-icon.png"></li>
+					</ul>
+				</form>
+			</section>
+			<div class ="bottom-wrap">
+				<div class = "feedback-wrap">
+					<div id ="feedback"></div>
+					<div id = "fact"></div>
+					<div id = "counter"><strong><span id ="answeredCorrect">0</span>/7</strong>
+						<img src="../Suncreen%20Quiz/sun-icon.png"></div>
+					</div>
+				</div>
+				<!-- Bottom Navigation -->
+				<nav> 
+					<ul class="clearfix">
+					</ul>
+				</nav>
+			</div>
+		</body>
+		</html>
