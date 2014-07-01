@@ -86,32 +86,38 @@ var questions = [
 
 
 function initQuestion() {
-// Example code. 
+//Ask the user the current question//
 $(".questions").text(questions[currentQuestion].question);
 $("#a1").val(questions[currentQuestion].answer1); 
 $("#a2").val(questions[currentQuestion].answer2); 
 $("#a3").val(questions[currentQuestion].answer3);
-$("#a4").val(questions[currentQuestion].answer4); 
+$("#a4").val(questions[currentQuestion].answer4);
 }
 
-// Code to see if what the user chose was correct. 
+// Code to see if what the user chose was correct//
 function checkAnswer() {
-if (value == questions[5]) {
+if (value == questions[currentQuestion].correct) {
 $("#feedback").html('CORRECT!');
-
-
-// Increment answeredCorrect if the user gets the question right
+$("#sun-tally").appendTo('<li>' + '<img src="../Suncreen%20Quiz/sun-icon.png">'+'</li>');
+currentQuestion++;
+//Count questions asked and add them to counter on page//
+questionCounter++;
+$("#questionsAsked").append(questionCounter);
+// Increment answeredCorrect if the user gets the question right//
 answeredCorrect++;
+
 } else {
-alert("Please select an answer!");
+		questionCounter++;
+		$("#questionsAsked").text(questionCounter);
 }
 
-// Increment currentQuestion
+// Increment currentQuestion//
 nextQuestion();
+initQuestion(questions[questionCounter]);
 }
 
 function nextQuestion(){
-// Check if user is at last question if not init next question. 
+// Check if user is at last question if not initial next question. 
 if(questionCounter > questions.length - 1) {
 finishGame();
 } else {
@@ -121,16 +127,27 @@ initQuestion();
 
 function finishGame() {
 // After the last question has been answered.
+	$('#submit').text("Try again?");
+    currentQuestion = 0;
+    answeredCorrect = 0;
+    questionCounter = 0;
+
 }
 
 // Submit code which will check the answer. 
 $("#submit").click(function(e){
 e.preventDefault();
 checkAnswer();
-currentQuestion++
+if (value !== "" || value !== undefined || value.length == 0) {
+	$('#feedback').text("Please Select");
+	return false;
+  }
 });
 
 var value = $("input[type='radio']:checked").val();
 initQuestion(); // When the page first loads call initQuestion() to start the quiz
+
+
+
 
 });
