@@ -16,7 +16,9 @@ var questions = [
 
 		answer4: "3pm to 6pm (Except for the winter and overcast days)",
 
-		correct: "10 am to 2pm"
+		correct: "10 am to 2pm",
+
+		fact: " Avoid peak sun hours between 10 a.m. and 4 p.m., when the sun's UV rays are most intense, even when it's overcast."
 
 	},
 
@@ -30,9 +32,11 @@ var questions = [
 
 		answer3: "People with dark skin color are naturally 100% protected from UV light.",
 
-		answer4: "UV form a tanning bed is safe because it’s a controlled amount.",
+		answer4: "UV from a tanning bed is safe because it's a controlled amount.",
 
-		correct: "There are two types of ultra violet light that harms your skin."
+		correct: "There are two types of ultra violet light that harms your skin.",
+
+		fact: "Both UVA (longwave) and UVB (shortwave) rays are harmful, you need protection from both kinds of rays."
 
 	},
 
@@ -47,13 +51,15 @@ var questions = [
 
 		answer4: "Solar Photon Factor",
 
-		correct: "Sun Protection Factor"
+		correct: "Sun Protection Factor",
+
+		fact: "SPF or Sun Protection Factor is a measure of a sunscreen's ability to prevent UVB from damaging the skin. Using an SPF 15 sunscreen theoretically prevents reddening 15 times longer - about five hours."
 
 	},
 
 		{
 
-		question: "How often should you apply sunscreen when you're out in the sun?",
+		question: "How often should you apply sunscreen when out in the sun?",
 
 		answer1: "Every hour.",
 
@@ -63,7 +69,9 @@ var questions = [
 
 		answer4: "Every five hours",
 
-		correct: "Every two-hours"
+		correct: "Every two-hours",
+
+		fact: "Re-apply sunscreen approximately every two hours or after swimming or sweating heavily according to the directions on the bottle."
 	},
 
 
@@ -71,15 +79,17 @@ var questions = [
 
 		question:"How much sunscreen should you apply?",
 
-		answer1: "a bottle per application.",
+		answer1: "A bottle per application.",
 
 		answer2: "About a shot glass per application.",
 
-		answer3: "A dab will do.",
+		answer3: "A dab will do yah.",
 
 		answer4: "About a teasoon per application.",
 
-		correct: "About a shot glass per application."
+		correct: "About a shot glass per application.",
+
+		fact: "Follow the guideline of “one ounce, enough to fill a shot glass”, which dermatologists consider the amount needed to cover the exposed areas of the body. Adjust the amount of sunscreen applied depending on your body size."
 	}
 
 ];
@@ -88,17 +98,16 @@ var questions = [
 function initQuestion() {
 //Ask the user the current question//
 $(".questions").text(questions[currentQuestion].question);
-$("#a1").val(questions[currentQuestion].answer1); 
-$("#a2").val(questions[currentQuestion].answer2); 
-$("#a3").val(questions[currentQuestion].answer3);
-$("#a4").val(questions[currentQuestion].answer4);
+$("#a1").html(questions[currentQuestion].answer1); 
+$("#a2").html(questions[currentQuestion].answer2); 
+$("#a3").html(questions[currentQuestion].answer3);
+$("#a4").html(questions[currentQuestion].answer4);
 }
 
 // Code to see if what the user chose was correct//
 function checkAnswer() {
 if (value == questions[currentQuestion].correct) {
-$("#feedback").html('CORRECT!');
-$("#sun-tally").appendTo('<li>' + '<img src="../Suncreen%20Quiz/sun-icon.png">'+'</li>');
+$("#feedback").text('CORRECT!');
 currentQuestion++;
 //Count questions asked and add them to counter on page//
 questionCounter++;
@@ -108,12 +117,16 @@ answeredCorrect++;
 
 } else {
 		questionCounter++;
+		currentQuestion++;
 		$("#questionsAsked").text(questionCounter);
+		$("#feedback").text('INCORRECT');
+		$("#sun-tally").append('<li>' + '<img src="../Suncreen%20Quiz/sun-icon.png">' + '</li>');
 }
 
 // Increment currentQuestion//
 nextQuestion();
 initQuestion(questions[questionCounter]);
+displayFact();
 }
 
 function nextQuestion(){
@@ -127,7 +140,7 @@ initQuestion();
 
 function finishGame() {
 // After the last question has been answered.
-	$('#submit').text("Try again?");
+	$('#submit').html("Try again?");
     currentQuestion = 0;
     answeredCorrect = 0;
     questionCounter = 0;
@@ -139,8 +152,8 @@ $("#submit").click(function(e){
 e.preventDefault();
 checkAnswer();
 if (value !== "" || value !== undefined || value.length == 0) {
-	$('#feedback').text("Please Select");
 	return false;
+	$('#feedback').text("Please Select");
   }
 });
 
@@ -148,6 +161,12 @@ var value = $("input[type='radio']:checked").val();
 initQuestion(); // When the page first loads call initQuestion() to start the quiz
 
 
+function displayFact () {
+	$("#fact").text(questions[currentQuestion - 1].fact);
+	if (questionCounter > questions.length - 1) {
+	$("#fact").text(questions[currentQuestion].fact);
+};
+}
 
 
 });

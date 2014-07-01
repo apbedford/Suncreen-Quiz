@@ -57,15 +57,20 @@ form {
 	font-size: 25px;
 }
 
+.radio	{
+	float: left;
+}
+
 .answers, #a1, #a2, #a3, #a4 {
 	font-family: Arial;
 	color: #622312;
 	list-style: none;
-	display: block;
 	padding-left: 20px;
 	margin-bottom: 0px;
-	width: 650px;
 }
+ #a1, #a2, #a3, #a4 {
+ 	float: left;
+ }
 
 .answers li {
 	padding-bottom: 25px;
@@ -106,7 +111,6 @@ form {
 	width:230px;
 	margin-top: 400px;
 	margin-left: 30px;
-	border: 1px solid black;
 }
 
 #feedback {
@@ -121,10 +125,12 @@ form {
 #fact {
 	height: 150px;
 	width: 100%;
-	border:2px red solid;
 	font-family: arial;
 	color: #763017;
 	overflow:scroll;
+	font-family: arial 20px;
+	font color: red;
+	font-weight: bold;
 }
 
 .bottom-wrap{
@@ -146,5 +152,4 @@ form {
 	margin-top: 30px;
 	display: inline-block;
 	float: left;
-	display: none;
 }
