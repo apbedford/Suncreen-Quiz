@@ -1,7 +1,9 @@
 $(document).ready(function(){
-var currentQuestion = 0;
-var answeredCorrect = 0;
-var	questionCounter = 0;
+	//Global variables//
+	var currentQuestion = 0;
+	var answeredCorrect = 0;
+	var	questionCounter = 0;
+
 //store questions & answers in array//
 var questions = [
 	{
@@ -16,9 +18,9 @@ var questions = [
 
 		answer4: "3pm to 6pm (Except for the winter and overcast days)",
 
-		correct: "10 am to 2pm",
+		correct: "10am to 2pm",
 
-		fact: " Avoid peak sun hours between 10 a.m. and 4 p.m., when the sun's UV rays are most intense, even when it's overcast."
+		fact: " Avoid peak sun hours between 10 a.m. and 2 p.m., when the sun's UV rays are most intense, even when it's overcast."
 
 	},
 
@@ -30,7 +32,7 @@ var questions = [
 
 		answer2: "There are two types of ultra violet light that harms your skin.",
 
-		answer3: "People with dark skin color are naturally 100% protected from UV light.",
+		answer3: "Darker skin tones don't need sunscreen and are protected from UV light.",
 
 		answer4: "UV from a tanning bed is safe because it's a controlled amount.",
 
@@ -89,78 +91,118 @@ var questions = [
 
 		correct: "About a shot glass per application.",
 
-		fact: "Follow the guideline of “one ounce, enough to fill a shot glass”, which dermatologists consider the amount needed to cover the exposed areas of the body. Adjust the amount of sunscreen applied depending on your body size."
-	}
+		fact: "Follow the guideline of 'one ounce, enough to fill a shot glass', which dermatologists consider the amount needed to cover the exposed areas of the body. Adjust the amount of sunscreen applied depending on your body size."
+	},
+
+		{
+
+		question: "The sun is the best way to get which vitamin?.",
+
+		answer1: "Vitimin A",
+
+		answer2: "Vitimin C",
+
+		answer3: "Vitimin D",
+
+		answer4: "None of the above",
+
+		correct: "None of the above",
+
+		fact: "Our bodies can produce some vitamin D following exposure to the sun's ultraviolet B (UVB) radiation. However, after a limited amount of sun exposure (approximately five minutes daily for a Caucasian in New York at 12 PM in summer), vitamin D production reaches its maximum. "
+
+	},
 
 ];
 
-
+//Set the user questions to take the quiz//
 function initQuestion() {
-//Ask the user the current question//
-$(".questions").text(questions[currentQuestion].question);
-$("#a1").html(questions[currentQuestion].answer1); 
-$("#a2").html(questions[currentQuestion].answer2); 
-$("#a3").html(questions[currentQuestion].answer3);
-$("#a4").html(questions[currentQuestion].answer4);
+	$(".questions").text(questions[currentQuestion].question);
+	$("#a1").html(questions[currentQuestion].answer1); 
+	$("#a2").html(questions[currentQuestion].answer2); 
+	$("#a3").html(questions[currentQuestion].answer3);
+	$("#a4").html(questions[currentQuestion].answer4);
+	$(".radio1").val(questions[currentQuestion].answer1); 
+	$(".radio2").val(questions[currentQuestion].answer2); 
+	$(".radio3").val(questions[currentQuestion].answer3);
+	$(".radio4").val(questions[currentQuestion].answer4);
+	$("#restart").hide();
 }
 
 // Code to see if what the user chose was correct//
-function checkAnswer() {
-if (value == questions[currentQuestion].correct) {
-$("#feedback").text('CORRECT!');
-currentQuestion++;
-//Count questions asked and add them to counter on page//
-questionCounter++;
-$("#questionsAsked").append(questionCounter);
-// Increment answeredCorrect if the user gets the question right//
-answeredCorrect++;
-
-} else {
+function checkAnswer(userAnswer) {
+	console.log(userAnswer.val());
+	if (userAnswer.val() == questions[currentQuestion].correct) {
+		$("#feedback").text('CORRECT!');
+		currentQuestion++;
+		//Count questions asked and add them to counter on page//
+		questionCounter++;
+		$("#questionsAsked").html(questionCounter);
+		// Increment answeredCorrect if the user gets the question right//
+		answeredCorrect++;
+		$("#answeredCorrect").html(answeredCorrect);
+		//User has selected an incorrect answer and adds a count to sum of all questions asked//
+	} else {
 		questionCounter++;
 		currentQuestion++;
 		$("#questionsAsked").text(questionCounter);
 		$("#feedback").text('INCORRECT');
 		$("#sun-tally").append('<li>' + '<img src="../Suncreen%20Quiz/sun-icon.png">' + '</li>');
-}
+	}
 
-// Increment currentQuestion//
-nextQuestion();
-initQuestion(questions[questionCounter]);
-displayFact();
+	// Increment currentQuestion//
+	nextQuestion();
+	initQuestion(questions[questionCounter]);
+	displayFact();
 }
 
 function nextQuestion(){
-// Check if user is at last question if not initial next question. 
-if(questionCounter > questions.length - 1) {
-finishGame();
-} else {
-initQuestion();
-}
+	// Check if user is at last question if not initial next question//
+	if(questionCounter > questions.length - 1) {
+	finishGame();
+	} else {
+	initQuestion();
+	}
 }
 
+// After the last question has been answered//
 function finishGame() {
-// After the last question has been answered.
-	$('#submit').html("Try again?");
-    currentQuestion = 0;
-    answeredCorrect = 0;
-    questionCounter = 0;
+$('.answers').remove();
+	if (answeredCorrect < 3) {
+		$(".questions").text("Ouch! Try again, you don't want to get burned this summer!");
+	}
 
+	else if (answeredCorrect <5) {
+		$(".questions").text("Not Bad, but please try again.");
+	}
+
+	else if (answeredCorrect <=5) {
+		$(".questions").text("Nice you're almost summer ready!");	
+	}
+
+	else {
+		$(".questions").text("Perfect! You really know your stuff!");
+	}
+		$("#restart").show();
+		$('#submit').hide();
 }
 
 // Submit code which will check the answer. 
 $("#submit").click(function(e){
-e.preventDefault();
-checkAnswer();
-if (value !== "" || value !== undefined || value.length == 0) {
-	return false;
-	$('#feedback').text("Please Select");
-  }
+	e.preventDefault();
+	var chosenAnswer = $("input[type='radio']:checked");
+	if (chosenAnswer.length > 0){
+		checkAnswer(chosenAnswer);
+//checks if property is there and makes it false
+		$("input[type='radio']:checked").prop('checked', false);
+	} else {
+		$('#feedback').text("Please Select");
+	}
+
 });
 
-var value = $("input[type='radio']:checked").val();
-initQuestion(); // When the page first loads call initQuestion() to start the quiz
+initQuestion();
 
-
+//Displays the fact that will inform the user of about sunscreen regardless if correct or not.
 function displayFact () {
 	$("#fact").text(questions[currentQuestion - 1].fact);
 	if (questionCounter > questions.length - 1) {

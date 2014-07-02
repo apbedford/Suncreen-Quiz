@@ -83,7 +83,7 @@ form {
 	padding-bottom: 13px;
 }
 
-#submit {
+#submit, #restart {
 	width: 200px;
 	height: 50px;
 	background: #59ADDB;
@@ -152,4 +152,9 @@ form {
 	margin-top: 30px;
 	display: inline-block;
 	float: left;
+}
+
+.endGame {
+	font-family: 'lobster', 3em;
+	display: none;
 }
