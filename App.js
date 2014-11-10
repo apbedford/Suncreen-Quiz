@@ -130,7 +130,6 @@ function initQuestion() {
 
 // Code to see if what the user chose was correct//
 function checkAnswer(userAnswer) {
-	console.log(userAnswer.val());
 	if (userAnswer.val() == questions[currentQuestion].correct) {
 		$("#feedback").text('CORRECT!');
 		currentQuestion++;
@@ -146,12 +145,10 @@ function checkAnswer(userAnswer) {
 		currentQuestion++;
 		$("#questionsAsked").text(questionCounter);
 		$("#feedback").text('INCORRECT');
-		$("#sun-tally").append('<li>' + '<img src="../Suncreen%20Quiz/sun-icon.png">' + '</li>');
 	}
 
 	// Increment currentQuestion//
 	nextQuestion();
-	initQuestion(questions[questionCounter]);
 	displayFact();
 }
 
@@ -184,7 +181,18 @@ $('.answers').remove();
 	}
 		$("#restart").show();
 		$('#submit').hide();
+
+		//resetGame();
 }
+
+/*function resetGame() {
+$("#restart").on('click', function(e){
+	e.preventDefault();
+	currentQuestion = 0;
+	answeredCorrect = 0;
+	questionCounter = 0;
+	userAnswer = 0;
+} */
 
 // Submit code which will check the answer. 
 $("#submit").click(function(e){
@@ -207,7 +215,7 @@ function displayFact () {
 	$("#fact").text(questions[currentQuestion - 1].fact);
 	if (questionCounter > questions.length - 1) {
 	$("#fact").text(questions[currentQuestion].fact);
-};
+}
 }
 
 
